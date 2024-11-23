@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+def junitVersion = '5.11.3'
+def assertjVersion = '3.26.3'
+
+group 'uj.wmii.pwj'
+version '1.0'
+
+sourceCompatibility = JavaVersion.VERSION_21
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:$junitVersion"
+    testImplementation "org.assertj:assertj-core:$assertjVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
